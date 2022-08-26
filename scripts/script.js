@@ -1,3 +1,15 @@
+
+// event handlers for the buttons
+//grab the buttons
+const buttons = Array.from(document.querySelectorAll('.num'));
+buttons.forEach(bttn => bttn.addEventListener('click', modifyDisplay));
+
+
+function modifyDisplay(e) {
+    const display = document.querySelector(".input-display");
+    display.textContent = e.target.value; // only displays one click at a time    
+}
+
 function add(n1, n2) {
     return n1 + n2;
 }
