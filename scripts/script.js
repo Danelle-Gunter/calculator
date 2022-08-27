@@ -4,10 +4,17 @@
 const buttons = Array.from(document.querySelectorAll('.num'));
 buttons.forEach(bttn => bttn.addEventListener('click', modifyDisplay));
 
+const clearbtn = document.querySelector('.clear');
+clearbtn.addEventListener('click', clearDisplay);
 
 function modifyDisplay(e) {
     const display = document.querySelector(".input-display");
-    display.textContent += e.target.value; // only displays one click at a time    
+    display.textContent += e.target.value;    
+}
+
+function clearDisplay() {
+    const display = document.querySelector(".input-display");
+    display.textContent = '';
 }
 
 function add(n1, n2) {
