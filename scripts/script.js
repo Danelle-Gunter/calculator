@@ -7,6 +7,9 @@ buttons.forEach(bttn => bttn.addEventListener('click', modifyDisplay));
 const clearbtn = document.querySelector('.clear');
 clearbtn.addEventListener('click', clearDisplay);
 
+const operations = Array.from(document.querySelectorAll('.opr'));
+operations.forEach(opBtns => opBtns.addEventListener('click', calculate));
+
 function modifyDisplay(e) {
     const display = document.querySelector(".input-display");
     display.textContent += e.target.value;    
@@ -15,6 +18,26 @@ function modifyDisplay(e) {
 function clearDisplay() {
     const display = document.querySelector(".input-display");
     display.textContent = '';
+}
+
+function calculate(e) {
+    const firstNumber = document.querySelector(".input-display").textContent;
+    const operation = e.target.value;
+    clearDisplay();
+    
+    // secondNumber is not showing
+    const secondNumber = document.querySelector(".input-display").textContent;
+    clearDisplay();
+    
+    const equalbtn = document.querySelector('.equal');
+    equalbtn.addEventListener('click', () => {
+        const display = document.querySelector(".input-display");
+        display.textContent = operate(firstNumber, secondNumber, operation);
+        console.log(display);
+        console.log(firstNumber);
+        console.log(secondNumber);
+    });
+    
 }
 
 function add(n1, n2) {
