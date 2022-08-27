@@ -7,7 +7,7 @@ buttons.forEach(bttn => bttn.addEventListener('click', modifyDisplay));
 
 function modifyDisplay(e) {
     const display = document.querySelector(".input-display");
-    display.textContent = e.target.value; // only displays one click at a time    
+    display.textContent += e.target.value; // only displays one click at a time    
 }
 
 function add(n1, n2) {
