@@ -1,14 +1,20 @@
 
 // event handlers for the buttons
 //grab the buttons
-const buttons = Array.from(document.querySelectorAll('.num'));
-buttons.forEach(bttn => bttn.addEventListener('click', modifyDisplay));
+// const buttons = Array.from(document.querySelectorAll('.num'));
+// buttons.forEach(bttn => bttn.addEventListener('click', modifyDisplay));
 
-const clearbtn = document.querySelector('.clear');
-clearbtn.addEventListener('click', clearDisplay);
+// const clearbtn = document.querySelector('.clear');
+// clearbtn.addEventListener('click', clearDisplay);
 
-const operations = Array.from(document.querySelectorAll('.opr'));
-operations.forEach(opBtns => opBtns.addEventListener('click', calculate));
+// const operations = Array.from(document.querySelectorAll('.opr'));
+// operations.forEach(opBtns => opBtns.addEventListener('click', calculate));
+
+// grabbing all the buttons
+const buttons = Array.from(document.querySelectorAll('button'));
+buttons.forEach(bttn => bttn.addEventListener('click', (e) => {
+    console.log(e.target.value);
+}));
 
 function modifyDisplay(e) {
     const display = document.querySelector(".input-display");
@@ -57,8 +63,3 @@ function operate(n1, n2, operand) {
             break;
     }    
 }
-
-console.log(operate(2, 3, '+'));
-console.log(operate(2, 3, '-'));
-console.log(operate(2, 3, '*'));
-console.log(operate(2, 3, '/'));
