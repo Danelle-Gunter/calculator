@@ -11,6 +11,12 @@ function inputDigit(digit) {
     calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
 }
 
+function inputDecimal(dot) {
+    if (!calculator.displayValue.includes(dot)) {
+        calculator.displayValue += dot;
+    }
+}
+
 function updateDisplay() {
     const display = document.querySelector('.calculator-display');
     display.value = calculator.displayValue;
@@ -19,9 +25,16 @@ function updateDisplay() {
 // grabbing all the buttons
 const buttons = Array.from(document.querySelectorAll('button'));
 buttons.forEach(bttn => bttn.addEventListener('click', (e) => {
-    const target = e.target.value;
+    const {target} = e;
+    const classValue = target.classList.value;
 
-    inputDigit(target);
+    if (classValue === 'decimal') {
+        inputDecimal(target.value);
+        updateDisplay();
+        return;
+    }
+
+    inputDigit(target.value);
     updateDisplay();
 }));
 
