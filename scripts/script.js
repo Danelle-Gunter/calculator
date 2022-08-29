@@ -1,30 +1,34 @@
+// An object to keep track of everything in a math expression
+const calculator = {
+    displayValue: '0',
+    firstOperand: null,
+    waitForSecondOperand: false,
+    operator: null,
+};
 
-// event handlers for the buttons
-//grab the buttons
-// const buttons = Array.from(document.querySelectorAll('.num'));
-// buttons.forEach(bttn => bttn.addEventListener('click', modifyDisplay));
+function updateDisplay() {
+    const display = document.querySelector('.calculator-display');
+    display.value = calculator.displayValue;
+}
 
-// const clearbtn = document.querySelector('.clear');
-// clearbtn.addEventListener('click', clearDisplay);
-
-// const operations = Array.from(document.querySelectorAll('.opr'));
-// operations.forEach(opBtns => opBtns.addEventListener('click', calculate));
+updateDisplay();
 
 // grabbing all the buttons
 const buttons = Array.from(document.querySelectorAll('button'));
 buttons.forEach(bttn => bttn.addEventListener('click', (e) => {
-    console.log(e.target.value);
+    const target = e.target.value;
+    console.log(target);
 }));
 
-function modifyDisplay(e) {
-    const display = document.querySelector(".input-display");
-    display.textContent += e.target.value;    
-}
+// function modifyDisplay(e) {
+//     const display = document.querySelector(".input-display");
+//     display.textContent += e.target.value;    
+// }
 
-function clearDisplay() {
-    const display = document.querySelector(".input-display");
-    display.textContent = '';
-}
+// function clearDisplay() {
+//     const display = document.querySelector(".input-display");
+//     display.textContent = '';
+// }
 
 function calculate(e) {
     const firstNumber = document.querySelector(".input-display").textContent;
