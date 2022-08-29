@@ -22,12 +22,16 @@ function updateDisplay() {
     display.value = calculator.displayValue;
 }
 
-// grabbing all the buttons
+// So the user sees 0 on the display
+updateDisplay();
+
+// button work
 const buttons = Array.from(document.querySelectorAll('button'));
 buttons.forEach(bttn => bttn.addEventListener('click', (e) => {
     const {target} = e;
     const classValue = target.classList.value;
 
+    // will check for more class values when I make the functions
     if (classValue === 'decimal') {
         inputDecimal(target.value);
         updateDisplay();
@@ -38,15 +42,7 @@ buttons.forEach(bttn => bttn.addEventListener('click', (e) => {
     updateDisplay();
 }));
 
-// function modifyDisplay(e) {
-//     const display = document.querySelector(".input-display");
-//     display.textContent += e.target.value;    
-// }
-
-// function clearDisplay() {
-//     const display = document.querySelector(".input-display");
-//     display.textContent = '';
-// }
+// older code below
 
 function calculate(e) {
     const firstNumber = document.querySelector(".input-display").textContent;
