@@ -6,18 +6,23 @@ const calculator = {
     operator: null,
 };
 
+function inputDigit(digit) {
+    const {displayValue} = calculator;
+    calculator.displayValue = displayValue === '0' ? digit : displayValue + digit;
+}
+
 function updateDisplay() {
     const display = document.querySelector('.calculator-display');
     display.value = calculator.displayValue;
 }
 
-updateDisplay();
-
 // grabbing all the buttons
 const buttons = Array.from(document.querySelectorAll('button'));
 buttons.forEach(bttn => bttn.addEventListener('click', (e) => {
     const target = e.target.value;
-    console.log(target);
+
+    inputDigit(target);
+    updateDisplay();
 }));
 
 // function modifyDisplay(e) {
