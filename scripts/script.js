@@ -20,6 +20,12 @@ function inputDigit(digit) {
 }
 
 function inputDecimal(dot) {
+    if (calculator.waitingForSecondOperand === true) {
+        calculator.displayValue = '0.';
+        calculator.waitingForSecondOperand = false;
+        return;
+    }
+
     if (!calculator.displayValue.includes(dot)) {
         calculator.displayValue += dot;
     }
@@ -84,29 +90,30 @@ updateDisplay();
 const buttons = Array.from(document.querySelectorAll('button'));
 buttons.forEach(bttn => bttn.addEventListener('click', (e) => {
     const {target} = e;
-    const classValue = target.classList.value;
+    const {value} = target;
 
-    // will check for more class values when I make the functions
-    if (classValue === 'decimal') {
-        inputDecimal(target.value);
-        updateDisplay();
-        return;
+    switch (value) {
+        case '+':
+        case '-':
+        case '*':
+        case '/':
+        case '=':
+            handleOperator(value);
+            break;
+        case '.':
+            inputDecimal(value);
+            break;
+        case 'C':
+            resetCalculator();
+            break;
+        default:
+            if (Number.isInteger(parseFloat(value))) {
+                inputDigit(value);
+            }
     }
 
-    if (classValue === 'opr') {
-        handleOperator(target.value);
-        updateDisplay();
-        return;
-    }
-
-    if (classValue === 'clear') {
-        resetCalculator();
-        updateDisplay();
-        return;
-    }
-
-    inputDigit(target.value);
     updateDisplay();
+
 }));
 
 
