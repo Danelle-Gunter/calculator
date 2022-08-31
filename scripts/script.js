@@ -88,6 +88,7 @@ updateDisplay();
 
 // button work
 const buttons = Array.from(document.querySelectorAll('button'));
+
 buttons.forEach(bttn => bttn.addEventListener('click', (e) => {
     const {target} = e;
     const {value} = target;
